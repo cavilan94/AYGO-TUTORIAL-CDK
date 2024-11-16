@@ -47,7 +47,8 @@
         <dependency>
             <groupId>software.constructs</groupId>
             <artifactId>constructs</artifactId>
-            <version>${constructs.version}</version>
+            <version>10.4.2</version>
+            <type>jar</type>
         </dependency>
 
         <dependency>
