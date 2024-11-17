@@ -33,7 +33,7 @@ HellowCdkStack es la a función donde se define que componentes o modulos va acr
 aws sts get-caller-identity --query "Account" --output text
 aws configure get region
 
-4) Para eso se debe ejecutar el comando: cdk bootstrap, sin embargo al ejecutar este comando se genera un error debido a que el usuario creado ena ws para el laboratorio de estudiantes no tiene los privilegios para crear los roles requeridos por los recursos solicitados en la función.
+4)Ahora se debe realziar el proceso de bootstrap, que es el proceso a nivel de AWS por el cual se crean los recursos requeridos para el despliegue de la aplicación, para realizar el bootstrap se debe ejecutar el comando: cdk bootstrap, sin embargo al ejecutar este comando se genera un error debido a que el usuario creado ena ws para el laboratorio de estudiantes no tiene los privilegios para crear los roles requeridos por los recursos solicitados en la función.
 
 ![image](https://github.com/user-attachments/assets/d2a82b8e-ebd9-49ad-80d7-dbedeca5ea1f)
 
@@ -41,7 +41,7 @@ El comando utiliza la configuración por defecto donde valida contra el IAM de A
 
 ![image](https://github.com/user-attachments/assets/5a86b3e6-e906-4090-a5b9-781b27f3aacc)
 
-Sin embargo en Widnows por defecto no permite la ejecución de este tipo de comandos ya que se reconoce como un script y su ejecución esta deshabilitada por razones de seguridad para evitar posibles infecciones por malware. para poder desactivar esta configuración de seguridad se deben ejecutar los siguientes comandos:
+Sin embargo en Windows por defecto no permite la ejecución de este tipo de comandos ya que se reconoce como un script y su ejecución esta deshabilitada por razones de seguridad para evitar posibles infecciones por malware. para poder desactivar esta configuración de seguridad se deben ejecutar los siguientes comandos:
 
 powershell "cdk bootstrap --show-template | Out-File -encoding utf8 bootstrap-template.yaml" (comando para habilitar la ejecución de scripts en la politica de ejecución con el usuario actual)
 Set-ExecutionPolicy Restricted -Scope CurrentUser (comando para deshabilitar la ejecución de scripts en la politica de ejecución con el usuario actual)
@@ -101,15 +101,18 @@ Lo anterior se requiere para que al momento de crear la función lambda utilice 
 
 ![image](https://github.com/user-attachments/assets/a92a3f6f-3c7a-4ca5-9901-23cf86ecfa92)
 
-9) Sintetizar el template creado en cloudformation, el cual se hace por medio del comando: cdk synth
+9) Ahora se debe realizar el proceso de sintetización de la aplicación, este proceso a nivel de AWS consiste en alistar el codigo antes de realizar el despliegue de la aplicación y adicionalmente generar un template en cloudformation, lo anterior se hace por medio del comando: cdk synth
 
 ![image](https://github.com/user-attachments/assets/4094902a-dacf-4baa-b6d5-f812689bb2c2)
+
+![image](https://github.com/user-attachments/assets/55699d98-4807-4ea4-ad82-97591cb1368e)
+
 
 Si la ejecución del comando fue correcta, se debe obtener una serie de archivos en la carpeta cdk.out
 
 ![image](https://github.com/user-attachments/assets/11fb2b47-0d0e-4b58-abc3-4b676ac9c4a1)
 
-10) Desplegar el CDK Stack, por medio del siguiente comando: cdk deploy
+10) Desplegar el CDK Stack, por medio del siguiente comando: cdk deploy -r "usuario arn":role\LabRole, donde se indica el usuario que debe utilizar para el despliegue, evitando errores al intentar crear nuevos roles por defecto, para lo cual no se tienen permisos.
 
 ![image](https://github.com/user-attachments/assets/da16a619-a893-4d54-afa8-9e5df4ca40b0)
 
