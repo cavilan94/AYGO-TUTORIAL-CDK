@@ -113,7 +113,7 @@ Si la ejecución del comando fue correcta, se debe obtener una serie de archivos
 
 ![image](https://github.com/user-attachments/assets/da16a619-a893-4d54-afa8-9e5df4ca40b0)
 
-11) Probar la aplicación, si todo esta correcto al ingresar la URL indicada en la salida del comando del punto anterior se debe obtener la salida de la función lambda "Hellow World"
+11) Probar la aplicación, si todo esta correcto al ingresar la URL indicada en la salida del comando del punto anterior se debe obtener la salida de la función lambda "Hello World"
 
 ![image](https://github.com/user-attachments/assets/7ed01665-0020-4c01-8917-c8b32a56fbd6)
 
