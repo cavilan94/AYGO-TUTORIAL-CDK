@@ -53,4 +53,59 @@ Al ejecutar el comando se crea un el template .yaml en la carpeta del proyecto
 
 ![image](https://github.com/user-attachments/assets/0f2b1e05-b44f-420a-b25f-40fea60155ab)
 
+este archivo se puede abrir dentro del mismo IDE utilizado anteriormente, el archivo contiene mucha información que se peude agrupar por categorias.
+
+![image](https://github.com/user-attachments/assets/e8b5487b-37b5-464b-a6de-22508e51b135)
+
+Dentro de este archivo se requiere editar  2 cosas en la sección de resoruces, la primera es comentarear todas las lineas que tienen que ver con creaciones de roles, las cuales estan identificadas con la palabra clave "ROLE".
+
+![image](https://github.com/user-attachments/assets/c71704f8-f5e9-47af-95fe-b844cb6b5722)
+
+Lo segundo es editar el valor del campo Fn ::sub: por "*" en la sección FileAssetsBucketEncryptionKey
+
+![image](https://github.com/user-attachments/assets/c4ada224-df59-4dfe-a66e-b72d191205c9)
+
+![image](https://github.com/user-attachments/assets/144d2eed-f1db-4629-97be-67119e7688de)
+
+Una vez estos campos han sido realizados, se salva el archivo y ya se puede realizar la ejecución del cmando boostrap indicando que use como base el template que fue editado.
+
+comando: cdk bootstrap --template bootstrap-template.yaml
+
+![image](https://github.com/user-attachments/assets/a1c24add-008e-465a-90c8-1c32df3e8627)
+
+Esta vez la ejecución del comando fue exitosa, desde el lado de AWS en el menú de cloudformation debe aparecer una pila llamada CDKToolkit
+
+![image](https://github.com/user-attachments/assets/fc14d44d-d66b-4a12-90cd-cacc167b3867)
+
+5) Como siguiente paso se debe compilar la aplicación CDK para verificar que no hallan errores en el codigo, para el caso de una aplicación basada en JAVA, se hacer por medio del siguiente comando de mavens:
+
+mvn compile -q
+
+![image](https://github.com/user-attachments/assets/4a4f561f-1ad9-4d94-ba26-d1729f1b9d67)
+
+6) se debe listar los CDK staks creados para verificar que todo este correcto, con el siguiente comando: cdk list
+
+![image](https://github.com/user-attachments/assets/b3cfc91e-8f48-4091-b725-709e3e5eaed8)
+
+7) Ahora se debe definir la función Lambda que se va a utilziar en la applicacion CDK, esto se hace dentro de la función HellowCdkStack
+
+![image](https://github.com/user-attachments/assets/4b673b7a-63e8-4ea1-8e53-1bcac1999c55)
+
+Dentro de esta función se debe indicar que el role del usuario a utilziar es LabRole, ya que es el unico con el que se cuenta dentro del IAM para el perfild el usuario de laboratorio, adicionalmente se debe ingresar el valor del arn asociado a ese role dentro del IAM de AWS.
+
+![image](https://github.com/user-attachments/assets/2b985621-a622-43ec-ac2f-554dac63e17f)
+
+Lo anterior se requiere para que al momento de crear la función lambda utilice este role por defecto y no intente crear uno nuevo, para lo cual como ya mencionó antes, no se cuenta con los privilegios.
+
+8) Definir la URL de la función lambda, esto se hace dentro de la función HellowCdkStack
+
+![image](https://github.com/user-attachments/assets/a92a3f6f-3c7a-4ca5-9901-23cf86ecfa92)
+
+9) Sintetizar el template creado en cloudformation, el cual se hace por medio del comando: cdk synth
+
+![image](https://github.com/user-attachments/assets/4094902a-dacf-4baa-b6d5-f812689bb2c2)
+
+Si la ejecución del comando fue correcta, se debe obtener una serie de archivos en la carpeta cdk.out
+
+![image](https://github.com/user-attachments/assets/11fb2b47-0d0e-4b58-abc3-4b676ac9c4a1)
 
