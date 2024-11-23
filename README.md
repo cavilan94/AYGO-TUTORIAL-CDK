@@ -45,7 +45,7 @@ El comando utiliza la configuración por defecto donde valida contra el IAM de A
 
 Sin embargo en Windows por defecto no permite la ejecución de este tipo de comandos ya que se reconoce como un script y su ejecución esta deshabilitada por razones de seguridad para evitar posibles infecciones por malware, para poder desactivar esta configuración de seguridad se deben ejecutar los siguientes comandos:
 
-powershell "cdk bootstrap --show-template | Out-File -encoding utf8 bootstrap-template.yaml" (comando para habilitar la ejecución de scripts en la politica de ejecución con el usuario actual)
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser (comando para habilitar la ejecución de scripts en la politica de ejecución con el usuario actual)
 Set-ExecutionPolicy Restricted -Scope CurrentUser (comando para deshabilitar la ejecución de scripts en la politica de ejecución con el usuario actual)
 Get-ExecutionPolicy (comando para verificar la politica de ejecución de scripts)
 
