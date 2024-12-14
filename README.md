@@ -10,7 +10,7 @@ Arquitectura de la aplicación:
 
 ![image](https://github.com/user-attachments/assets/ebf8ccb4-6910-42bc-a4c2-de2ec6f10272)
 
-La aplicación consiste en una maquina virtual monstada en AWS utilizando el módulo EC2, desde esta amquina virtual se hace un llmado a una función lambda la cual retorna un mensaje que dice "hellow world", al acceder desde un navegador a la dirección IP publica generada por AWS para la maquina virtual y hacer un llmado a la función lambda.
+La aplicación consiste en una maquina virtual desplegada en AWS utilizando el módulo EC2, desde esta maquina virtual se hace un llamado a una función lambda la cual retorna un mensaje que dice "hellow world", al acceder desde un navegador a la dirección IP publica generada por AWS para la maquina virtual y hacer un llmado a la función lambda.
 
 Pasos seguidos en el tutorial:
 1) crear el directorio sobre el cual se va a crear la applicación que se va a subir a AWS, para esto se ingresa por CMD o Powershell a la ruta donde se desea crear el directorio y se ejecutan los siguientes comandos:
