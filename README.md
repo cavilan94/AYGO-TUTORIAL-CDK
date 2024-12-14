@@ -1,4 +1,4 @@
-En este documento se describiran los pasos para crear una aplicación básica en AWS en una cuenta de estudiante, utilizando CDK en un ambiente de entorno windows.
+En este documento se describiran los pasos seguidos de acuerdo a un tutorial para crear una aplicación básica en AWS en una cuenta de estudiante, utilizando CDK en un ambiente de entorno windows.
 
 Prerrequisitos:
 Tener instalado AWS cli.
@@ -6,7 +6,13 @@ Tener instaaldo CDK cli.
 Tener isntalsdo un editor IDE, para el ejemplo se usa Netbeans
 Tener instalado Mavens
 
-Pasos:
+Arquitectura de la aplicación:
+
+![image](https://github.com/user-attachments/assets/ebf8ccb4-6910-42bc-a4c2-de2ec6f10272)
+
+La aplicación consiste en una maquina virtual monstada en AWS utilizando el módulo EC2, desde esta amquina virtual se hace un llmado a una función lambda la cual retorna un mensaje que dice "hellow world", al acceder desde un navegador a la dirección IP publica generada por AWS para la maquina virtual y hacer un llmado a la función lambda.
+
+Pasos seguidos en el tutorial:
 1) crear el directorio sobre el cual se va a crear la applicación que se va a subir a AWS, para esto se ingresa por CMD o Powershell a la ruta donde se desea crear el directorio y se ejecutan los siguientes comandos:
    mkdir hello-cdk y luego cd hello-cdk para entrar al directorio
 2) una vez dentro del directorio, se debe ejecutar el comando para crear la applicación basica que se va a subir a AWS, hay diferentes opciones dependiendo del lenguaje que se quiera utilizar para la aplicación, ene este caso se va a usar JAVA.
